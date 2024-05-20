@@ -42,7 +42,7 @@ func main() {
 	defer db.Close()
 
 	// Create the GET /members endpoint handler
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/healthcheckz", func(w http.ResponseWriter, r *http.Request) {
 
 		// Set the response headers and write the JSON data
 		w.Header().Set("Content-Type", "application/json")
