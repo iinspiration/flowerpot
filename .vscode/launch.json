@@ -17,7 +17,7 @@
                 "DB_HOST":"13.213.9.147",
                 "DB_USER": "flowerpot",
                 "DB_PASS": "password",
-                "DB_PORT": "6033",
+                "DB_PORT": "3306",
                 "DB_NAME": "app_db",
 			},
 			"showLog": true
