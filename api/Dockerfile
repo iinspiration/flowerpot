@@ -8,8 +8,8 @@ LABEL "co.elastic.logs/json.overwrite_keys"=true
 LABEL "co.elastic.logs/json.add_error_key"=true
 LABEL "co.elastic.logs/json.expand_keys"=true
 
-COPY go.mod ./
-COPY go.sum ./
+COPY ./api/go.mod ./
+COPY ./api/go.sum ./
 RUN go mod download
 RUN go mod verify
 
