@@ -29,16 +29,16 @@ services:
       - 8081:80
     networks:
         - app-network
-    web:
-      image: nginx:latest
-      container_name: web
-      ports:
-        - "80:80"
-      volumes:
-        - ./html:/var/www/html
-        - ./nginx.conf:/etc/nginx/nginx.conf
-      networks:
-        - app-network
+  web:
+    image: nginx:latest
+    container_name: web
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - app-network
 volumes:
   dbdata:
 networks:
