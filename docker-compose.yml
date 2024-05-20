@@ -45,7 +45,7 @@ services:
       dockerfile: api/Dockerfile
     container_name: api
     ports:
-      - "8080:8080"
+      - "8888:8888"
     volumes:
       - ./api:/go/src/app
     networks:

@@ -1,20 +1,20 @@
-# Use the official Golang image as the base image
-FROM golang:latest
-
-# Set the working directory inside the container
+FROM golang:1.20-alpine
+RUN mkdir /app
 WORKDIR /app
 
-# Copy the Go module files
-COPY go.mod go.sum ./
+LABEL "co.elastic.logs/enabled"=true
+LABEL "co.elastic.logs/json.keys_under_root"=true
+LABEL "co.elastic.logs/json.overwrite_keys"=true
+LABEL "co.elastic.logs/json.add_error_key"=true
+LABEL "co.elastic.logs/json.expand_keys"=true
 
-# Download and install the Go dependencies
+COPY ./api/go.mod ./
+COPY ./api/go.sum ./
 RUN go mod download
+RUN go mod verify
 
-# Copy the source code into the container
-COPY . .
+COPY ./api ./
 
-# Build the Go application
-RUN go build -o app
+RUN go build -o myapp
 
-# Set the command to run the executable
-CMD ["./app"]
+ENTRYPOINT ["./myapp"]
