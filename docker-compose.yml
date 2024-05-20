@@ -29,16 +29,6 @@ services:
       - 8081:80
     networks:
       - app-network
-  web:
-    image: nginx:latest
-    container_name: web
-    ports:
-      - "80:80"
-    volumes:
-      - ./html:/etc/nginx/html
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    networks:
-      - app-network
   api:
     build:
       context: .
@@ -48,6 +38,19 @@ services:
       - "8888:8888"
     volumes:
       - ./api:/go/src/app
+    networks:
+      - app-network
+  web:
+    image: nginx:latest
+    container_name: web
+    depends_on:
+      - db
+      - api
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/etc/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
     networks:
       - app-network
 
