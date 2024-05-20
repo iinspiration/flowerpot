@@ -13,7 +13,7 @@ COPY ./api/go.sum ./
 RUN go mod download
 RUN go mod verify
 
-COPY . ./
+COPY ./api ./
 
 RUN go build -o myapp
 
