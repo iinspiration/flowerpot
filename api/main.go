@@ -42,6 +42,15 @@ func main() {
 	defer db.Close()
 
 	// Create the GET /members endpoint handler
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+
+		// Set the response headers and write the JSON data
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"message": "API is running"}`))
+	})
+
+	// Create the GET /members endpoint handler
 	http.HandleFunc("/members", func(w http.ResponseWriter, r *http.Request) {
 		// Query the database for members
 		rows, err := db.Query("SELECT id, name FROM members")
