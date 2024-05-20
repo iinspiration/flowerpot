@@ -4,11 +4,15 @@ services:
   api:
     build:
       context: .
-      dockerfile: api/Dockerfile
+      dockerfile: Dockerfile
     container_name: api
     ports:
       - "8888:8888"
     volumes:
-      - ./api:/go/src/app
+      - ./:/go/src/app
     networks:
       - app-network
+
+networks:
+  app-network:
+    driver: bridge
